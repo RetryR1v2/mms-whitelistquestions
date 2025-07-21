@@ -1,0 +1,16 @@
+Locales["de_lang"] = {
+    WhiteListHeader = 'Willkommen auf Dein Server Name',
+    StartWhitelistButton = 'Einreisefragebogen Beginnen',
+    LeaveServerButton = 'Server Verlassen',
+    WhiteListSubHeader = 'Dein Server Name',
+    IntroText = 'Bitte beantworte einige Fragen um bei uns Spielen zu können',
+    WhitelistAborted = 'Du hast die Whitelist Abgebrochen',
+    WhitelistSuccessfull = 'Du hast die Whitelist bestanden. Viel Spaß auf unserem Projekt.',
+    WhitelistFailed = 'Du hast die Whitelist nicht bestanden. Bitte Lese dir das Regelwerk durch.',
+    QuestionHeader = 'Frage: ',
+    WhiteListEndedHeader = 'Whitelist Beendet.',
+    AbortWhitelist = 'Whitelist abbrechen Server verlassen ?',
+    FinishWhitelistButton = 'Whitelist Beenden',
+    WhitelistFailedKickmessage = 'Whitelist nicht bestanden.',
+    YouAreBannedKickmessage = 'Du wurdest von diesem Server Gebannt! Grund: Whitelist nicht Bestanden',
+}
