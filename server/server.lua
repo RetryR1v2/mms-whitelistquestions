@@ -8,14 +8,14 @@ Citizen.CreateThread(function()
     if Config.ValidateOldUsers then
         local Users = MySQL.query.await("SELECT * FROM users", { })
         if #Users > 0 then -- If Greater then 0 he Already has a Char so not a new user
-            for h,v in ipairs(Users) do
-                local Whitelisted = MySQL.query.await("SELECT * FROM mms_whitelistquestions", { })
-                if #Whitelisted == 0 then
+            local Whitelisted = MySQL.query.await("SELECT * FROM mms_whitelistquestions", { })
+            if #Whitelisted == 0 then
+                for h,v in ipairs(Users) do
                     MySQL.insert('INSERT INTO `mms_whitelistquestions` (identifier,whitelisted,banned,bantime) VALUES (?, ?, ?, ?)',
                     {v.identifier,1,0,0}, function()end)
-                else
-                    AlreadyValidated = true
                 end
+            else
+                AlreadyValidated = true
             end
             if AlreadyValidated then
                 Citizen.Wait(30000)

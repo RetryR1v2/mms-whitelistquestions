@@ -1,6 +1,7 @@
 Config = {}
 
 Config.Debug = false  -- NEED TO BE FALSE ON LIVE SERVERS
+Config.NewVorpCore = true -- If VORP Core is Up2Date else set this to false
 Config.defaultlang = "de_lang"
 
 -- Script Settings

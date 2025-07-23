@@ -11,23 +11,44 @@ local WrongAwnsers = 0
 
 local WhitelistPassed = false
 
+if Config.NewVorpCore then
 --- OnPlayerSpawned
 
-AddEventHandler("vorp_core:Client:OnPlayerSpawned",function()
-    Citizen.Wait(5000)
-    local ImWhitelisted = VORPcore.Callback.TriggerAwait('mms-whitelistquestions:callback:CheckIfWhitelisted')
-    local ImBanned = VORPcore.Callback.TriggerAwait('mms-whitelistquestions:callback:CheckIfBanned')
-    if not ImWhitelisted and not ImBanned then
-        WhiteListMenu:Open({
-            startupPage = WhiteListMenuPage1,
-        })
-        FreezeEntityPosition(PlayerPedId(),true)
-        Frozen = true
-    elseif not ImWhitelisted and ImBanned then
-        TriggerServerEvent('mms-whitelistquestions:server:DropBannedPlayer')
-    end
-end)
+    AddEventHandler("vorp_core:Client:OnPlayerSpawned",function()
+        Citizen.Wait(5000)
+        local ImWhitelisted = VORPcore.Callback.TriggerAwait('mms-whitelistquestions:callback:CheckIfWhitelisted')
+        local ImBanned = VORPcore.Callback.TriggerAwait('mms-whitelistquestions:callback:CheckIfBanned')
+        if not ImWhitelisted and not ImBanned then
+            WhiteListMenu:Open({
+                startupPage = WhiteListMenuPage1,
+            })
+            FreezeEntityPosition(PlayerPedId(),true)
+            Frozen = true
+        elseif not ImWhitelisted and ImBanned then
+            TriggerServerEvent('mms-whitelistquestions:server:DropBannedPlayer')
+        end
+    end)
 
+else
+    --- OnCharacterSelected
+
+    RegisterNetEvent('vorp:SelectedCharacter')
+    AddEventHandler('vorp:SelectedCharacter', function()
+        Citizen.Wait(50000)
+        local ImWhitelisted = VORPcore.Callback.TriggerAwait('mms-whitelistquestions:callback:CheckIfWhitelisted')
+        local ImBanned = VORPcore.Callback.TriggerAwait('mms-whitelistquestions:callback:CheckIfBanned')
+        if not ImWhitelisted and not ImBanned then
+            WhiteListMenu:Open({
+                startupPage = WhiteListMenuPage1,
+            })
+            FreezeEntityPosition(PlayerPedId(),true)
+            Frozen = true
+        elseif not ImWhitelisted and ImBanned then
+            TriggerServerEvent('mms-whitelistquestions:server:DropBannedPlayer')
+        end
+    end)
+    
+end
 --- DebugModeEnabled
 
 Citizen.CreateThread(function ()
