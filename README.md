@@ -22,8 +22,8 @@
 
 # Required
 
-vorp_core
-
+- vorp_core: https://github.com/VORPCORE/vorp_core-lua
+- feather-menu: https://github.com/FeatherFramework/feather-menu
 
 # CREDITS
 - Discord: https://discord.gg/Hua9DFXZYN

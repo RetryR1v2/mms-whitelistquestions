@@ -27,6 +27,7 @@ shared_scripts {
 
 dependency {
 	'vorp_core',
+	'feather-menu'
 }
 
 lua54 'yes'
